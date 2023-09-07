@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Registro</title>
+    <!-- nuevo registro -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="image-login">
+            <img src="/images/RLO.png" alt="main-image">
+        </div>
+
+        <form id="form">
+            <div class="content-form">
+                <label for="name-input">
+                    Nombre <span class="span-content">*</span>
+                </label>
+                <input
+                 type="text" 
+                 id="name-input" 
+                 name="name-input" 
+                 autocomplete="off"
+                 placeholder="Maria Mero"
+                 >
+                 <p class="content-p">Su nombre y apellido empezando en mayúsculas</p>
+            </div>
+
+            <div class="content-form">
+                <label for="email-input">
+                    Correo <span class="span-content">*</span>
+                </label>
+                <input
+                 type="email" 
+                 id="email-input" 
+                 name="email-input" 
+                 autocomplete="off"
+                 placeholder="ejemplo@correo.com"
+                 >
+                 <p class="content-p">El correo es requerido.</p>
+            </div>
+
+            <div class="content-form">
+                <label for="password-input">
+                    Contraseña <span class="span-content">*</span>
+                </label>
+                <input
+                 type="password"  
+                 id="password-input" 
+                 name="password-input" 
+                 autocomplete="off"
+                 placeholder="********"
+                 >
+                 <p class="content-p">
+                    Debe tener al menos un número y letras <br>
+                    Debe tener al menos 8 caracteres
+                </p>
+            </div>
+
+            <div class="content-form">
+                <label for="match-input">
+                    Confirmar contraseña <span class="span-content">*</span>
+                </label>
+                <input
+                 type="password"  
+                 id="match-input" 
+                 name="match-input" 
+                 autocomplete="off"
+                 placeholder="********"
+                 >
+                 <p class="content-p">
+                    Debe coincidir con la contraseña.
+                </p>
+            </div>
+
+            <button id="form-btn" disabled>
+            <div id="spinner-container">
+                <div class="spinner-sm"></div>
+              </div>
+              <span id="button-text">Registrar</span>
+            </button>
+        </form>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

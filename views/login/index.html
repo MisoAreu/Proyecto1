@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- ya registrado -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="image-login">
+            <img src="/images/RLO.png" alt="main-image">
+        </div>
+
+
+       
+
+        <form id="form">
+
+
+            <div class="content-form">
+                <label for="email-input">
+                    Correo <span class="span-content">*</span>
+                </label>
+                <input
+                 type="email" 
+                 id="email-input" 
+                 name="email-input" 
+                 autocomplete="off"
+                 >
+            </div>
+
+            <div class="content-form">
+                <label for="password-input">
+                    Contraseña <span class="span-content">*</span>
+                </label>
+                <input
+                 type="password"  
+                 id="password-input" 
+                 name="password-input" 
+                 autocomplete="off">
+                 <p id="error-text"></p>
+            </div>
+
+            <button id="form-btn">
+            <div id="spinner-container">
+                <div class="spinner"></div>
+              </div>
+              <span id="button-text">Iniciar sesion</span>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
