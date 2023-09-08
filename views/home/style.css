@@ -21,7 +21,7 @@ sombra de las cards
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: rgb(255, 255, 255);
+    
 }
 body {
     font-family: 'Space Grotesk', sans-serif;
@@ -44,7 +44,28 @@ img {
     object-fit: cover;   
     border-radius: 20px 20px 0px 0px;
 }
-header{
+
+.navbar{
+   
+    background-color: #ffffff;
+}
+
+  /* lista de opciones */
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand{
+   width: 20px;
+   height: 40px;
+}
+
+.letras{
+    color: #000000;
+}
+
+/* header{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +75,7 @@ header{
     position: fixed;
     width: 100%;
 
-}
+} */
 .scroll{
     background-color: aliceblue;
     box-shadow: .1rem .2rem .3rem #080808;
@@ -68,9 +89,9 @@ header{
 
 
 /*pasa de negro a blanco*/
-.carrito{
+ .carrito{
     background-color: #000000;
-    filter: invert(100%);
+    /* filter: invert(100%); */
     width: 45px;
     height: auto;
     position: absolute;
@@ -78,7 +99,7 @@ header{
     cursor: pointer;
     
     
-}
+} 
 
 /*info de los productos engloba*/
 .contenedor{
