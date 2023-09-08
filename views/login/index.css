@@ -16,8 +16,29 @@ img {
 }
 
 body {
-    background-color: #000000;
+    background-color: #ab3232;
 }
+
+.navbar{
+   
+    background-color: #ffffff;
+}
+
+  /* lista de opciones */
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand{
+   width: 20px;
+   height: 40px;
+   
+
+}
+
+
+
 
 #image-login {
     display: none;
@@ -89,7 +110,7 @@ label {
 }
 
 #form-btn:hover {
-    background-color: #9afbec;
+    background-color: #e2b319;
 }
 
 #spinner-container {
