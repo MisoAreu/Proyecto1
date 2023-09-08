@@ -92,9 +92,25 @@ label {
     background-color: #9afbec;
 }
 
-p  {
+#spinner-container {
     display: none;
+    justify-content: center;
 }
+
+.spinner-sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    border-top-color: #999;
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 @media (min-width: 768px) {
     form {

@@ -20,20 +20,16 @@ function spinnerHidden() {
     spinnerShow();
     try {
       const user = {
-        email: emailInput.value,
+        email: emailInput.value.toLowerCase(),
         password: passwordInput.value
       };
       const { data } = await axios.post('/api/login', user);
-      if (data) {
-        window.location.pathname = `/account/`;
-      } else {
-        window.location.pathname = `/lobby/`;
-      }
+        window.location.pathname = `/home/`;
       // window.location.pathname = `/agenda/`;
     
       spinnerHidden();
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       errorText.innerHTML = error.response.data.error
       spinnerHidden();
     }

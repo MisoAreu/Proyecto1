@@ -124,11 +124,3 @@ x.addEventListener("click", function(){
     contenedorCompra.classList.remove('contenedorCompra')
     informacionCompra.classList.remove('informacionCompra')
 })
-
-btnLogin.addEventListener('click', () => {
-    window.location.pathname = '/login';
-})
-
-btnSignup.addEventListener('click', () => {
-    window.location.pathname = '/signup';
-})

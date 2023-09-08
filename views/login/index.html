@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- ya registrado -->
     <link rel="stylesheet" href="index.css">
 </head>
@@ -40,16 +42,17 @@
                  id="password-input" 
                  name="password-input" 
                  autocomplete="off">
-                 <p id="error-text"></p>
+                 <p id="error-text" class="text-sm text-red-600"></p>
             </div>
 
             <button id="form-btn">
             <div id="spinner-container">
-                <div class="spinner"></div>
+                <div class="spinner-sm"></div>
               </div>
               <span id="button-text">Iniciar sesion</span>
             </button>
         </form>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
