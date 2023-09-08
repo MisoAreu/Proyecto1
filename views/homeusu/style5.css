@@ -91,11 +91,11 @@ img {
 
 /*pasa de negro a blanco*/
  .carrito{
-    background-color: #000000;
+    /* background-color: #000000; */
     /* filter: invert(100%); */
     width: 45px;
     height: auto;
-    position: absolute;
+    /* position: absolute; */
     top: 14px;
     cursor: pointer;
     

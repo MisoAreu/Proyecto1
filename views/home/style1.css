@@ -59,7 +59,11 @@ img {
 .navbar-brand{
    width: 20px;
    height: 40px;
+   
+
 }
+
+
 
 .letras{
     color: #000000;
@@ -90,7 +94,7 @@ img {
 
 /*pasa de negro a blanco*/
  .carrito{
-    background-color: #000000;
+    /* background-color: #000000; */
     /* filter: invert(100%); */
     width: 45px;
     height: auto;

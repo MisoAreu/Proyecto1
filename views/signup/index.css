@@ -17,8 +17,29 @@ img {
 }
 
 body {
-    background-color: #18181b;
+    background-color: #070707;
 }
+
+
+
+.navbar{
+   
+    background-color: #ffffff;
+}
+
+  /* lista de opciones */
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand{
+   width: 20px;
+   height: 40px;
+   
+
+}
+
 
 #image-login {
     display: none;
@@ -100,7 +121,8 @@ label {
     padding-right: 1rem;
     border-radius: 0.5rem;
     font-weight: 700;
-    color: rgb(255 255 255);
+    /* color: rgb(255 255 255); */
+    color:  #e2b319;;
     text-align: center;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
