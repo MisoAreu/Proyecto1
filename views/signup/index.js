@@ -90,8 +90,8 @@ form.addEventListener('submit', async e => {
        validation(passwordInput, false)
        validation(matchInput, false)
        spinnerHidden();
+       window.location.pathname = '/login';
     } catch (error) {
        spinnerHidden();
-
     }
    });
