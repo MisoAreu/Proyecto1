@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Registro</title>
     <!-- nuevo registro -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div id="notification" class="fixed top-20 left-0 right-0">
+
+    </div>
     <div id="main-container">
         <div id="image-login">
             <img src="/images/RLO.png" alt="main-image">
@@ -84,6 +88,7 @@
             </button>
         </form>
     </div>
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="../components/notification.js"></script>
 </body>
 </html>

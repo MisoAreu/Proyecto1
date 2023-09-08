@@ -1,3 +1,5 @@
+import { createNotification } from "../components/notification.js"
+
 const form = document.querySelector('#form');
 const nameInput = document.querySelector('#name-input');
 const emailInput = document.querySelector('#email-input');
@@ -81,6 +83,10 @@ form.addEventListener('submit', async e => {
            password: passwordInput.value,
         }
        const { data } = await axios.post('/api/users', newUser);
+       createNotification(false, data)
+       setTimeout(() => {
+        notification.innerHTML = '';
+       }, 5000)
        nameInput.value = '';
        emailInput.value = '';
        passwordInput.value = '';
@@ -90,8 +96,11 @@ form.addEventListener('submit', async e => {
        validation(passwordInput, false)
        validation(matchInput, false)
        spinnerHidden();
-       window.location.pathname = '/login';
     } catch (error) {
        spinnerHidden();
+       createNotification(true, error.response.data.error)
+        setTimeout(() => {
+            notification.innerHTML = '';
+        }, 5000);    
     }
    });
