@@ -33,9 +33,9 @@ loginRouter.post('/', async (request, response) => {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true
   });
-  const newUser = userExist.newuser
+  const admin = userExist.admin
 
-  return response.status(200).json(newUser);
+  return response.status(200).json(admin);
 });
   
   module.exports = loginRouter;

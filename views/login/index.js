@@ -24,7 +24,11 @@ function spinnerHidden() {
         password: passwordInput.value
       };
       const { data } = await axios.post('/api/login', user);
+      if (data) {
+        window.location.pathname = `/admin/`;
+      } else {
         window.location.pathname = `/home/`;
+      }
       // window.location.pathname = `/agenda/`;
     
       spinnerHidden();

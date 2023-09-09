@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MisoArreum</title>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,21 +32,21 @@
                 <h2>Añadir Nuevo Producto</h2>
                 <form>
                     <label>Nombre del producto</label>
-                    <input type="text" id="productoAñadir" name="nombreDelProducto">
+                    <input type="text" id="nameAdded" name="nombreDelProducto">
 
                     <label>Descripcion del Producto</label>
-                    <input type="text" id="descripcionAñadir" name="descripcionDelProducto">
+                    <input type="text" id="descriptionAdded" name="descripcionDelProducto">
 
                     <label>Valor del producto</label>
-                    <input type="number" id="valorAñadir">
+                    <input type="number" id="valueAdded">
 
                     <label>Existencia</label>
-                    <input type="number" id="existenciaAñadir">
+                    <input type="number" id="existAdded">
 
                     <label>Url Imagen</label>
-                    <input  type="text" id="ImagenAñadir">
+                    <input  type="text" id="imageAdded">
 
-                    <input class="button" type="button" id="botonAñadir" value="Añadir">
+                    <input disabled class="button" type="button" id="btnAdded" value="Añadir">
                 </form>
             </div>
             <!-- Editar -->
@@ -99,7 +99,7 @@
         </div>
     </main>
 
-    <script src="admin.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

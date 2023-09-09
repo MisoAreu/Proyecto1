@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
+const itemsRouter = require('./controllers/items');
 
 (async() => {
     try {
@@ -29,6 +30,7 @@ app.use('/signup', express.static(path.resolve('views', 'signup')));
 app.use('/login', express.static(path.resolve('views', 'login')));
 app.use('/home', express.static(path.resolve('views', 'homeusu')));
 app.use('/components', express.static(path.resolve('views', 'components')));
+app.use('/admin', express.static(path.resolve('views', 'admin')));
 app.use('/images', express.static(path.resolve('img',)));
 app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
 
@@ -37,5 +39,6 @@ app.use(morgan('tiny'));
 // Rutas backend
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/items', itemsRouter);
 
 module.exports = app;
