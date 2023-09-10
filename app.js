@@ -9,6 +9,8 @@ const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
 const itemsRouter = require('./controllers/items');
+const itemcarsRouter = require('./controllers/itemcars');
+const { userExtractor } = require('./middleware/auth');
 
 (async() => {
     try {
@@ -40,5 +42,6 @@ app.use(morgan('tiny'));
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/items', itemsRouter);
+app.use('/api/itemcars',userExtractor, itemcarsRouter);
 
 module.exports = app;

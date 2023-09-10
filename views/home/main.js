@@ -1,13 +1,3 @@
-// Funciones para almacenar y traer los datos que se almacenan
-function guardarAlmacenamientoLocal(llave, valor_a_guardar) {
-    localStorage.setItem(llave, JSON.stringify(valor_a_guardar))
-}
-function obtenerAlmacenamientoLocal(llave) {
-    const datos = JSON.parse(localStorage.getItem(llave))
-    return datos
-}
-let productos = obtenerAlmacenamientoLocal('productos') || [];
-
 // btn selectores
 const btnLogin = document.getElementById('btn-login')
 const btnSignup = document.getElementById('btn-signup')
@@ -29,33 +19,41 @@ let lista = []
 let valortotal = 0
 
 // Scroll de nuestra pagina cambio de color
-window.addEventListener("scroll", function () {
-    if (contenedor.getBoundingClientRect().top<10) {
-        header.classList.add("scroll")
-    }
-    else {
-        header.classList.remove("scroll")
-    }
-})
+// window.addEventListener("scroll", function () {
+//     if (contenedor.getBoundingClientRect().top<10) {
+//         header.classList.add("scroll")
+//     }
+//     else {
+//         header.classList.remove("scroll")
+//     }
+// })
 
+async function visualizarProductos() {
+    try {
+      // Obtén los productos desde tu API (debes ajustar la URL según tu configuración)
+      const response = await axios.get('/api/items');
+      //el array que trae mongo de los productos
+      const productos = response.data;
+      console.log(productos);
+      for (let i = 0; i < productos.length; i++) {
+        if (productos[i].exist > 0) {
+          console.log(productos[i]);
+          contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p>${productos[i].description}</p><p class="precio">$${productos[i].value}</p><button onclick=comprar(${i})>Comprar</button></div></div>`
+        } else {
+          contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p class="precio">$${productos[i].value}</p><p class="soldOut">Sold Out</p></div></div>`
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      // Manejo de errores si es necesario
+    }
+  }
 
+// Llama a la función para visualizar los productos al cargar la página
 window.addEventListener('load', () => {
     visualizarProductos();
     contenedorCompra.classList.add("none")
-})
-
-function visualizarProductos() {
-    contenedor.innerHTML = ""
-    for (let i = 0; i < productos.length; i++) {
-        if (productos[i].existencia > 0) {
-            contenedor.innerHTML += `<div><img src="${productos[i].urlImagen}"><div class="informacion"><p>${productos[i].nombre}</p><p>${productos[i].descripcion}</p><p class="precio">$${productos[i].valor}</p><button onclick=comprar(${i})>Comprar</button></div></div>`
-        }
-        else {
-            contenedor.innerHTML += `<div><img src="${productos[i].urlImagen}"><div class="informacion"><p>${productos[i].nombre}</p><p class="precio">$${productos[i].valor}</p><p class="soldOut">Sold Out</p></div></div>`
-        }
-    }
-}
-
+  });
 /*carrito*/
 function comprar(indice) {
     lista.push({ nombre: productos[indice].nombre, precio: productos[indice].valor })

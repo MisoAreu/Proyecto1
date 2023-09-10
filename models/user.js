@@ -11,7 +11,11 @@ const userSchema = new mongoose.Schema({
   admin: {
     type: Boolean,
     default: false
-  }
+  },
+  itemcars: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Itemcar'
+  }]
 });
 
 userSchema.set('toJSON', {

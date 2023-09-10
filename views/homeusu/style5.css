@@ -27,7 +27,6 @@ sombra de las cards
 body {
     font-family: 'Space Grotesk', sans-serif;
     background-color: white;
-    padding-top: 80px;
 }
 h1 a{
     font-family: 'Libre Baskerville', serif;
@@ -152,8 +151,8 @@ img {
 .informacion .precio {
     font-size: 14px;
     font-weight: 200;
-    
 }
+
 .informacion .precio span{
     font-size: 15px;
     font-weight: 200;
@@ -167,7 +166,8 @@ img {
     height: 35px;
     border-radius: 5px;
     border: none;
-
+    /* color del texto */
+    color: #ffffff;
     font-size: 17px;
     font-weight: 300;
     cursor: pointer;
@@ -222,6 +222,10 @@ img {
     align-items: flex-start;
     justify-content: flex-start;
     position: fixed;
+}
+
+.none {
+    display: none;
 }
 
 .informacionCompra h2{
