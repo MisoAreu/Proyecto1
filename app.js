@@ -32,6 +32,7 @@ app.use('/', express.static(path.resolve('views', 'home')));
 app.use('/signup', express.static(path.resolve('views', 'signup')));
 app.use('/login', express.static(path.resolve('views', 'login')));
 app.use('/home', express.static(path.resolve('views', 'homeusu')));
+app.use('/blog', express.static(path.resolve('views', 'blog')));
 app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/admin', express.static(path.resolve('views', 'admin')));
 app.use('/images', express.static(path.resolve('img',)));

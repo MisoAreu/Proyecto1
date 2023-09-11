@@ -34,10 +34,9 @@ async function visualizarProductos() {
       const response = await axios.get('/api/items');
       //el array que trae mongo de los productos
       const productos = response.data;
-      console.log(productos);
       for (let i = 0; i < productos.length; i++) {
         if (productos[i].exist > 0) {
-          console.log(productos[i]);
+        //   console.log(productos[i]);
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p>${productos[i].description}</p><p class="precio">$${productos[i].value}</p><button onclick=comprar(${i})>Comprar</button></div></div>`
         } else {
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p class="precio">$${productos[i].value}</p><p class="soldOut">Sold Out</p></div></div>`
@@ -52,7 +51,7 @@ async function visualizarProductos() {
 // Llama a la función para visualizar los productos al cargar la página
 window.addEventListener('load', () => {
     visualizarProductos();
-    contenedorCompra.classList.add("none")
+    // contenedorCompra.classList.add("none")
   });
 /*carrito*/
 function comprar(indice) {
@@ -115,13 +114,6 @@ function eliminar(indice){
     visualizarProductos()
     mostrarElemtrosLista()
 }
-
-x.addEventListener("click", function(){
-    body.style.overflow = "auto"
-    contenedorCompra.classList.add('none')
-    contenedorCompra.classList.remove('contenedorCompra')
-    informacionCompra.classList.remove('informacionCompra')
-})
 
 btnLogin.addEventListener('click', () => {
     window.location.pathname = '/login';

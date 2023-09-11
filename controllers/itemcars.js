@@ -37,4 +37,30 @@ itemcarsRouter.post('/', async (req, res) => {
     }
   });
 
+// Ruta para eliminar un producto al carrito del usuario
+itemcarsRouter.delete('/:id', async (req, res) => {
+  try {
+    const requestingUserId = req.user
+    const user = requestingUserId._id
+    // Obtén los datos del producto que se va a eliminar del carrito desde el cuerpo de la solicitud
+    const productId = req.params.id
+
+    // Verificar si el producto existe en la base de datos
+    const existingProduct = await Itemcar.findById(productId);
+    if (!existingProduct) {
+        return response.status(404).json({ error: 'El producto no existe en la base de datos' });
+    }
+
+    // Respuesta con el producto agregado al carrito
+    await Itemcar.findByIdAndRemove(productId);
+
+    // Envía la respuesta con éxito
+    return res.sendStatus(200);
+  } catch (error) {
+    // Manejo de errores si es necesario
+    console.error(error);
+    res.status(500).json({ error: 'Hubo un error al agregar el producto al carrito' });
+  }
+});
+
 module.exports = itemcarsRouter;

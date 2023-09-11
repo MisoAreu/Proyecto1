@@ -284,6 +284,7 @@ img {
 }
 
 .productosCompra img{
+    color: rgb(255 255 255);
     width: 25px;
     height: auto;
     margin-right:10px;
@@ -336,8 +337,9 @@ img {
     padding: 7px 10px;
     border-radius: 10px;
 }
+
 .botonTrash{
-    background-color: rgb(255, 252, 255);
+    background-color: rgb(2 2 2);
     border:none;
     display: flex;
     justify-content: center;

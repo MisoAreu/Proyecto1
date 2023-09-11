@@ -1,4 +1,5 @@
 // btn selectores
+const btnBlog = document.getElementById('btn-blog')
 const btnLogout = document.getElementById('btn-logout')
 ///////////
 // Variables que traemos de nuestro html
@@ -17,7 +18,6 @@ const x = document.getElementById('x')
 let productos = [];
 let lista = []
 let valortotal = 0
-console.log(lista);
 // Scroll de nuestra pagina cambio de color
 // window.addEventListener("scroll", function () {
 //     if (contenedor.getBoundingClientRect().top<10) {
@@ -37,7 +37,7 @@ async function visualizarProductos() {
       productos = response.data;
       for (let i = 0; i < productos.length; i++) {
         if (productos[i].exist > 0) {
-          console.log(productos[i]);
+          // console.log(productos[i]);
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p>${productos[i].description}</p><p class="precio">$${productos[i].value}</p><button onclick=comprar(${i})>Comprar</button></div></div>`
         } else {
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p class="precio">$${productos[i].value}</p><p class="soldOut">Sold Out</p></div></div>`
@@ -54,7 +54,7 @@ async function comprar(indice) {
     try {
       // Obtén el producto actual
       const productoAComprar = productos[indice];
-      console.log('producto da:', productoAComprar);
+      // console.log('producto da:', productoAComprar);
   
       // Realiza una solicitud POST para agregar el producto al carrito del usuario
       const response = await axios.post('/api/itemcars', {
@@ -109,7 +109,7 @@ async function mostrarElemtrosLista() {
         const productoEnLista = productos.find(producto => producto.name === carritoItem.item);
         // Si se encuentra el producto, agrega el nombre y el precio al carrito local
         if (productoEnLista) {
-          lista.push({ nombre: carritoItem.item, precio: productoEnLista.value });
+          lista.push({ nombre: carritoItem.item, precio: productoEnLista.value, id: carritoItem.id });
         }
       }
       // Actualiza la visualización del número de productos en el carrito
@@ -123,7 +123,7 @@ async function mostrarElemtrosLista() {
     // Recorre la lista de productos en el carrito local y muestra cada producto en la página
     valortotal = 0;
     for (let i = 0; i < lista.length; i++) {
-      productosCompra.innerHTML += `<div><div class="img"><button onclick=eliminar(${i}) class="botonTrash"><img src="/images/trash.png"></button><p>${lista[i].nombre}</p></div><p> $${lista[i].precio}</p></div>`;
+      productosCompra.innerHTML += `<div><div class="img"><button onclick=eliminar(${i}) class="botonTrash"><img src="/images/trash.svg"></button><p>${lista[i].nombre}</p></div><p> $${lista[i].precio}</p></div>`;
       valortotal += parseInt(lista[i].precio);
     }
 
@@ -140,19 +140,21 @@ function eliminar(indice){
     let i = 0
     while (van == true) {
         if (productos[i].name == lista[indice].nombre) {
+          // console.log(lista[indice]);
+          const productId = lista[indice].id
+          // console.log(productId);
+            const response = axios.delete(`/api/itemcars/${productId}`)
             productos[i].exist += 1
             lista.splice(indice, 1)
             van = false
         }
         i += 1
     }
-    guardarAlmacenamientoLocal("productos", productos)
 
     numero.innerHTML = lista.length
     if (lista.length == 0){
         numero.classList.remove("diseñoNumero")
     }
-    visualizarProductos()
     mostrarElemtrosLista()
 }
 
@@ -170,4 +172,8 @@ btnLogout.addEventListener('click', async e => {
   } catch (error) {
     console.log(error);
   }
+})
+
+btnBlog.addEventListener('click', () => {
+  window.location.pathname = '/blog';
 })
