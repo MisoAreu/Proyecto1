@@ -3,7 +3,11 @@ const Itemcar = require('../models/itemcar');
 
 // Ruta para obtener todos los items
 itemcarsRouter.get('/', async (request, response) => {
-
+  const userID = request.user
+  const car = await Itemcar.find({ user: userID });
+  // console.log('el usuario fue:', userID);
+  // console.log('car me dio', car);
+  return response.status(200).json(car);
 });
 
 // Ruta para agregar un producto al carrito del usuario
