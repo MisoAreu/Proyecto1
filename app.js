@@ -12,6 +12,7 @@ const itemsRouter = require('./controllers/items');
 const itemcarsRouter = require('./controllers/itemcars');
 const { userExtractor } = require('./middleware/auth');
 const logoutRouter = require('./controllers/logout');
+const adminRouter = require('./controllers/admin');
 
 (async() => {
     try {
@@ -45,6 +46,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/items', itemsRouter);
 app.use('/api/logout', logoutRouter);
+app.use('/api/admin', userExtractor, adminRouter)
 app.use('/api/itemcars',userExtractor, itemcarsRouter);
 
 module.exports = app;

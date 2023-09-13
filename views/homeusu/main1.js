@@ -135,7 +135,7 @@ async function mostrarElemtrosLista() {
 }
 
 
-function eliminar(indice){
+async function eliminar(indice){
     let van = true
     let i = 0
     while (van == true) {
@@ -143,7 +143,7 @@ function eliminar(indice){
           // console.log(lista[indice]);
           const productId = lista[indice].id
           // console.log(productId);
-            const response = axios.delete(`/api/itemcars/${productId}`)
+            const response = await axios.delete(`/api/itemcars/${productId}`)
             productos[i].exist += 1
             lista.splice(indice, 1)
             van = false

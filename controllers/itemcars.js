@@ -48,7 +48,7 @@ itemcarsRouter.delete('/:id', async (req, res) => {
     // Verificar si el producto existe en la base de datos
     const existingProduct = await Itemcar.findById(productId);
     if (!existingProduct) {
-        return response.status(404).json({ error: 'El producto no existe en la base de datos' });
+        return res.status(404).json({ error: 'El producto no existe en la base de datos' });
     }
 
     // Respuesta con el producto agregado al carrito
