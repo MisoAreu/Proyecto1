@@ -1,5 +1,5 @@
 const PAGE_URL = process.env.NODE_ENV === 'production'
-    ? 'placeholder'
+    ? 'https://misoareu-i3l1.onrender.com'
     : 'http://localhost:3000'
 
 const MONGO_URI = process.env.NODE_ENV === 'production'
