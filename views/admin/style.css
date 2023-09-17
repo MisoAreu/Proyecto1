@@ -62,7 +62,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 50px auto 45px auto;
+    margin: 0px auto 10px auto;
     width: 90%;
     flex-wrap: wrap;
     gap: 40px;

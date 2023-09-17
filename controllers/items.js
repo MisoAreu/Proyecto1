@@ -26,7 +26,6 @@ itemsRouter.post('/', async (request, response) => {
         image
       });
       const savedItem = await newItem.save();
-      console.log(savedItem);
       return response.status(201).json('Producto agregado exitosamente');
   });
 module.exports = itemsRouter;

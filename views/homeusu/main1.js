@@ -1,6 +1,6 @@
 // btn selectores
-const btnLogin = document.getElementById('btn-login')
-const btnSignup = document.getElementById('btn-signup')
+const btnBlog = document.getElementById('btn-blog')
+const btnLogout = document.getElementById('btn-logout')
 ///////////
 // Variables que traemos de nuestro html
 const informacionCompra = document.getElementById('informacionCompra');
@@ -18,7 +18,6 @@ const x = document.getElementById('x')
 let productos = [];
 let lista = []
 let valortotal = 0
-console.log(lista);
 // Scroll de nuestra pagina cambio de color
 // window.addEventListener("scroll", function () {
 //     if (contenedor.getBoundingClientRect().top<10) {
@@ -33,12 +32,12 @@ async function visualizarProductos() {
     try {
       // Obtén los productos desde tu API (debes ajustar la URL según tu configuración)
       const response = await axios.get('/api/items');
+      mostrarElemtrosLista()
       //el array que trae mongo de los productos
       productos = response.data;
-      console.log(productos);
       for (let i = 0; i < productos.length; i++) {
         if (productos[i].exist > 0) {
-          console.log(productos[i]);
+          // console.log(productos[i]);
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p>${productos[i].description}</p><p class="precio">$${productos[i].value}</p><button onclick=comprar(${i})>Comprar</button></div></div>`
         } else {
           contenedor.innerHTML += `<div><img src="${productos[i].image}"><div class="informacion"><p>${productos[i].name}</p><p class="precio">$${productos[i].value}</p><p class="soldOut">Sold Out</p></div></div>`
@@ -55,7 +54,7 @@ async function comprar(indice) {
     try {
       // Obtén el producto actual
       const productoAComprar = productos[indice];
-      console.log('producto da:', productoAComprar);
+      // console.log('producto da:', productoAComprar);
   
       // Realiza una solicitud POST para agregar el producto al carrito del usuario
       const response = await axios.post('/api/itemcars', {
@@ -96,34 +95,66 @@ carrito.addEventListener("click", function(){
 })
 
 /*recorrido*/ 
-function mostrarElemtrosLista() {
-    productosCompra.innerHTML = ""
-    valortotal = 0
-    for (let i = 0; i < lista.length; i++){
-        productosCompra.innerHTML += `<div><div class="img"><button onclick=eliminar(${i}) class="botonTrash"><img src="/images/trash.png"></button><p>${lista[i].nombre}</p></div><p> $${lista[i].precio}</p></div>`
-        valortotal += parseInt(lista[i].precio)
+async function mostrarElemtrosLista() {
+  try {
+    // Realiza una solicitud GET para obtener los productos en el carrito del usuario
+    const response = await axios.get('/api/itemcars');
+    // Verifica si la respuesta contiene datos
+    if (response.data && Array.isArray(response.data)) {
+      // Inicializa la lista de productos local
+      lista = [];
+      // Recorre los objetos en la respuesta y agrega cada producto al carrito local
+      for (const carritoItem of response.data) {
+        // Busca el producto correspondiente en la lista de productos obtenidos previamente
+        const productoEnLista = productos.find(producto => producto.name === carritoItem.item);
+        // Si se encuentra el producto, agrega el nombre y el precio al carrito local
+        if (productoEnLista) {
+          lista.push({ nombre: carritoItem.item, precio: productoEnLista.value, id: carritoItem.id });
+        }
+      }
+      // Actualiza la visualización del número de productos en el carrito
+      numero.innerHTML = lista.length;
+      numero.classList.add("diseñoNumero");
     }
-    total.innerHTML = `<p>Valor Total</p> <p><span>$${valortotal}</span></p>`
+
+    // Limpia la lista de productos del carrito en la página
+    productosCompra.innerHTML = "";
+
+    // Recorre la lista de productos en el carrito local y muestra cada producto en la página
+    valortotal = 0;
+    for (let i = 0; i < lista.length; i++) {
+      productosCompra.innerHTML += `<div><div class="img"><button onclick=eliminar(${i}) class="botonTrash"><img src="/images/trash.svg"></button><p>${lista[i].nombre}</p></div><p> $${lista[i].precio}</p></div>`;
+      valortotal += parseInt(lista[i].precio);
+    }
+
+    // Muestra el valor total en la página
+    total.innerHTML = `<p>Valor Total</p> <p><span>$${valortotal}</span></p>`;
+  } catch (error) {
+    console.error('Error al obtener los productos del carrito:', error);
+  }
 }
 
-function eliminar(indice){
+
+async function eliminar(indice){
     let van = true
     let i = 0
     while (van == true) {
         if (productos[i].name == lista[indice].nombre) {
+          // console.log(lista[indice]);
+          const productId = lista[indice].id
+          // console.log(productId);
+            const response = await axios.delete(`/api/itemcars/${productId}`)
             productos[i].exist += 1
             lista.splice(indice, 1)
             van = false
         }
         i += 1
     }
-    guardarAlmacenamientoLocal("productos", productos)
 
     numero.innerHTML = lista.length
     if (lista.length == 0){
         numero.classList.remove("diseñoNumero")
     }
-    visualizarProductos()
     mostrarElemtrosLista()
 }
 
@@ -132,4 +163,17 @@ x.addEventListener("click", function(){
     contenedorCompra.classList.add('none')
     contenedorCompra.classList.remove('contenedorCompra')
     informacionCompra.classList.remove('informacionCompra')
+})
+
+btnLogout.addEventListener('click', async e => {
+  try {
+    await axios.get('/api/logout');
+    window.location.pathname = '/login';
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+btnBlog.addEventListener('click', () => {
+  window.location.pathname = '/blog';
 })
