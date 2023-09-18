@@ -74,14 +74,6 @@ function comprar(indice) {
     numero.classList.add("diseñoNumero")
     return lista
 }
-/*ejecuta*/
-carrito.addEventListener("click", function(){
-    body.style.overflow = "hidden"
-    contenedorCompra.classList.remove('none')
-    contenedorCompra.classList.add('contenedorCompra')
-    informacionCompra.classList.add('informacionCompra')
-    mostrarElemtrosLista()
-})
 
 /*recorrido*/ 
 function mostrarElemtrosLista() {

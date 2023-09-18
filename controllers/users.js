@@ -25,7 +25,7 @@ usersRouter.post('/', async(request, response) => {
     passwordHash
   });
   const savedUser = await newUser.save();
-  const token = jwt.sign({ id: savedUser.id}, process.env.ACCES_TOKEN_SECRET, {
+  const token = jwt.sign({ id: savedUser.id}, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '1d'
   });
 
