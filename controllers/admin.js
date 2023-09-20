@@ -14,4 +14,13 @@ adminRouter.get('/', async(request, response) => {
       }
   })
 
+adminRouter.post('/', async (request, response) => {
+    const user = request.user.id
+    console.log('user que da', user);
+    const userExist = await User.findOne({ _id: user });
+    if (!userExist) {
+        return response.status(400).json({ error: 'error al encontrar al usuario' });
+      }
+})
+
 module.exports = adminRouter;

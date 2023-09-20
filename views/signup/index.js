@@ -9,6 +9,10 @@ const formBtn = document.querySelector('#form-btn');
 // Obtén una referencia al elemento del spinner
 const spinner = document.querySelector('#spinner-container');
 const button = document.getElementById('button-text');
+// btn paginas
+const btnBlog = document.getElementById('btn-blog')
+const btnHome = document.getElementById('btn-home')
+const btnLogin = document.getElementById('btn-login')
 
 // Regex Validation
 const NAME_VALIDATION = /^[A-Z\u00d1][a-zA-Z-ÿí\u00f1\u00d1]+(\s*[A-Z\u00d1][a-zA-Z-ÿí\u00f1\u00d1\s]*)$/;
@@ -104,3 +108,15 @@ form.addEventListener('submit', async e => {
         }, 5000);    
     }
    });
+
+btnHome.addEventListener('click', () => {
+    window.location.pathname = '/';
+  })
+
+btnLogin.addEventListener('click', () => {
+    window.location.pathname = '/login';
+  })
+
+btnBlog.addEventListener('click', () => {
+    window.location.pathname = '/blog';
+  })

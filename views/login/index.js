@@ -4,6 +4,10 @@ const form = document.querySelector('#form');
 const errorText = document.querySelector('#error-text');
 const spinner = document.querySelector('#spinner-container');
 const button = document.getElementById('button-text');
+//movernos entre paginas
+const btnBlog = document.getElementById('btn-blog')
+const btnHome = document.getElementById('btn-home')
+const btnSignup = document.getElementById('btn-signup')
 
 function spinnerShow() {
     button.innerHTML = '';
@@ -38,3 +42,15 @@ function spinnerHidden() {
       spinnerHidden();
     }
   });
+
+btnHome.addEventListener('click', () => {
+    window.location.pathname = '/';
+  })
+
+btnSignup.addEventListener('click', () => {
+    window.location.pathname = '/signup';
+  })
+
+btnBlog.addEventListener('click', () => {
+    window.location.pathname = '/blog';
+  })

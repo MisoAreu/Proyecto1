@@ -1,3 +1,11 @@
+(async() => {
+  try {
+      const user = await axios.post('/api/admin')      
+  } catch (error) {
+      const notUser = error.response.data.error
+      window.location.pathname = '/';
+  }
+})();
 // btn selectores
 const btnBlog = document.getElementById('btn-blog')
 const btnLogout = document.getElementById('btn-logout')
