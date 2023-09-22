@@ -6,6 +6,33 @@
         window.location.pathname = '/';
     }
 })();
+const productoEd = document.getElementById('productoEditar')
+const productoE = document.getElementById('productoEliminar')
+async function productoData() {
+    const productos = await axios.get('/api/items');
+    const data = productos.data
+    console.log(data);
+    data.forEach((producto) => {
+        const option = document.createElement('option');
+        option.value = producto.id; // El valor de la opción es el nombre del producto
+        option.text = producto.name; // El texto de la opción también es el nombre del producto
+        productoEd.appendChild(option); // Agregar la opción al select
+    });
+}
+async function productoDataE() {
+    const productos = await axios.get('/api/items');
+    const data = productos.data
+    console.log(data);
+    data.forEach((producto) => {
+        const option = document.createElement('option');
+        option.value = producto.id; // El valor de la opción es el nombre del producto
+        option.text = producto.name; // El texto de la opción también es el nombre del producto
+        productoE.appendChild(option); // Agregar la opción al select
+    });
+}
+productoData()
+productoDataE()
+
 //selectores
 const nameProductInput = document.querySelector('#nameAdded');
 const descriptionProductInput = document.getElementById('descriptionAdded');
@@ -53,7 +80,7 @@ document.getElementById("btnAdded").addEventListener("click", async function (ev
     if (productoAñadir == '' || descripcionAñadir == '' || valorAñadir == '' || existenciaAñadir == '' || imagenAñadir == '') {
         mensaje.classList.add('llenarCampos')
         setTimeout(() => { mensaje.classList.remove('llenarCampos') }, 2500)
-        van = false
+        // van = false
     }
     else {
         try {
@@ -81,84 +108,73 @@ document.getElementById("btnAdded").addEventListener("click", async function (ev
             van = false;
         }
     }
-
-    /*sino hay error se agrega*/
-    if (van == true) {
-        mensaje.classList.add('Realizado')
-        setTimeout(() => {
-            mensaje.classList.remove('repetidoError')
-            window.location.reload()
-        }, 1500)
-    }
 })
 
-// // Editar
-// const productoEd = document.getElementById('productoEditar')
-// const atributoEd = document.getElementById('atributoEditar')
-// const nuevoAtributoEd = document.getElementById('nuevoAtributo')
+// Editar
+const atributoEd = document.getElementById('atributoEditar')
+const nuevoAtributoEd = document.getElementById('nuevoAtributo')
+const btnEditar = document.getElementById('botonEditar');
 
-// document.getElementById("botonEditar").addEventListener("click", function (event) {
-//     event.preventDefault()
-//     let productoEditar = productoEd.value
-//     let atributoEditar = atributoEd.value
-//     let nuevoAtributo = nuevoAtributoEd.value
-//     let van = false
+btnEditar.addEventListener("click", async function (event) {
+    event.preventDefault();
+    let productoEditar = productoEd.value;
+    let atributoEditar = atributoEd.value;
+    let nuevoAtributo = nuevoAtributoEd.value;
 
-//     if (productoEditar == '' || atributoEditar == '' || nuevoAtributo == '') {
-//         mensaje.classList.add('llenarCampos')
-//         setTimeout(() => { mensaje.classList.remove('llenarCampos') }, 2500)
-//     }
-//     else {
-//         for (let i = 0; i < productos.length; i++) {
-//             if (productos[i].nombre == productoEditar) {
-//                 productos[i][atributoEditar] = nuevoAtributo
-//                 van = true
-//             }
-//         }
-//         /*notificacion*/
-//         if (van == true) {
-//             mensaje.classList.add('Realizado')
-//             setTimeout(() => {
-//                 mensaje.classList.remove('Realizado')
-//                 window.location.reload()
-//             }, 1500);
-//         }
-//         else {
-//             mensaje.classList.add('noExisteError')
-//             setTimeout(() => { mensaje.classList.remove('noExsiteError') }, 2500);
-//         }
-//         guardarAlmacenamientoLocal('productos', productos);
-//     }
-// })
+    if (productoEditar === '' || atributoEditar === '' || nuevoAtributo === '') {
+        mensaje.classList.add('llenarCampos');
+        setTimeout(() => { mensaje.classList.remove('llenarCampos') }, 2500);
+        return;
+    }
 
-// // Eliminar
-// const productoE = document.getElementById('productoEliminar')
+    try {
+        // Enviar una solicitud para actualizar el producto en el servidor
+        const updatedData = {
+            producto: productoEditar,
+            atributo: atributoEditar,
+            nuevoValor: nuevoAtributo
+        };
+        const { data } = await axios.patch('/api/items', updatedData);
+        console.log('data me dio:', data);
+        if (data === 'Producto actualizado exitosamente') {
+            productoData()
+            mensaje.classList.add('Realizado');
+            setTimeout(() => {
+                mensaje.classList.remove('Realizado');
+                window.location.reload();
+            }, 1500);
+        } else {
+            mensaje.classList.add('noExisteError');
+            setTimeout(() => { mensaje.classList.remove('noExsiteError') }, 2500);
+        }
+    } catch (error) {
+        console.error('Error al actualizar el producto en MongoDB:', error);
+    }
+});
 
-// document.getElementById("botonEliminar").addEventListener("click", function (event) {
-//     event.preventDefault()
-//     let productoEliminar = productoE.value
-//     let van = false
+// Eliminar
+const btnEliminar = document.getElementById('botonEliminar')
 
-//     for (let i = 0; i < productos.length; i++) {
-//         if (productos[i].nombre == productoEliminar) {
-//             productos.splice(i, 1)
-//             van = true
-//         }
-//     }
-
-//     if (van == false) {
-//         mensaje.classList.add('noExsiteError')
-//         setTimeout(() => { mensaje.classList.remove('noExsiteError') }, 2500);
-//     }
-//     else {
-//         mensaje.classList.add('Realizado')
-//         setTimeout(() => {
-//             mensaje.classList.remove('Realizado')
-//             window.location.reload()
-//         }, 1500);
-//     }
-//     guardarAlmacenamientoLocal('productos', productos);
-// })
+btnEliminar.addEventListener("click", async function (event) {
+    event.preventDefault()
+    let productoEliminar = productoE.value
+    console.log(productoE.value);
+    if (productoEliminar == '') {
+        mensaje.classList.add('noExsiteError')
+        setTimeout(() => { mensaje.classList.remove('noExsiteError') }, 2500);
+        return
+    }
+    const data = await axios.delete(`/api/items/${productoEliminar}`);
+    console.log('data me da', data.data);
+    if (data.data === 'Producto eliminado exitosamente') {
+        productoDataE()
+        mensaje.classList.add('eliminado')
+        setTimeout(() => {
+            mensaje.classList.remove('eliminado')
+            window.location.reload()
+        }, 1500);
+    }
+})
 
 // // mostrar productos
 // window.addEventListener("load", () => {

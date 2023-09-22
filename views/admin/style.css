@@ -165,6 +165,7 @@ option{
 
 
 /*errores usados*/
+.eliminado
 .repetidoError,
 .Realizado,
 .llenarCampos,
@@ -172,6 +173,7 @@ option{
     margin: 15px 0px;
 }
 
+.eliminado::after,
 .llenarCampos::after,
 .noExsiteError::after,
 .repetidoError::after,
@@ -182,7 +184,10 @@ option{
     border-radius: 10px;
 }
 
-
+.eliminado::after {
+    content: 'Producto eliminado exitosamente';
+    background-color: green;
+}
 /*realizdo correctamente*/
 .Realizado::after {
     content: 'Realizado';
