@@ -181,11 +181,12 @@ window.addEventListener("load", async () => {
     productoDataE()
     const items = await axios.get('/api/items');
     const data = items.data;
+    console.log(data);
 
     let mostraProductos = document.getElementById('mostrarProductos')
     mostraProductos.innerHTML = ''
     data.forEach((producto) => {
-        mostraProductos.innerHTML = `
+        mostraProductos.innerHTML += `
         <div class="contenedorProductos">
             <img src="${producto.image}">
             <div class="informacion">
