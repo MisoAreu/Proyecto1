@@ -8,10 +8,11 @@
 })();
 const productoEd = document.getElementById('productoEditar')
 const productoE = document.getElementById('productoEliminar')
+
 async function productoData() {
     const productos = await axios.get('/api/items');
     const data = productos.data
-    console.log(data);
+
     data.forEach((producto) => {
         const option = document.createElement('option');
         option.value = producto.id; // El valor de la opción es el nombre del producto
@@ -22,7 +23,6 @@ async function productoData() {
 async function productoDataE() {
     const productos = await axios.get('/api/items');
     const data = productos.data
-    console.log(data);
     data.forEach((producto) => {
         const option = document.createElement('option');
         option.value = producto.id; // El valor de la opción es el nombre del producto
@@ -30,8 +30,7 @@ async function productoDataE() {
         productoE.appendChild(option); // Agregar la opción al select
     });
 }
-productoData()
-productoDataE()
+
 
 //selectores
 const nameProductInput = document.querySelector('#nameAdded');
@@ -176,24 +175,30 @@ btnEliminar.addEventListener("click", async function (event) {
     }
 })
 
-// // mostrar productos
-// window.addEventListener("load", () => {
-//     const productoEd = document.getElementById('productoEditar')
-//     const productoEl = document.getElementById('productoEliminar')
-//     for (let i = 0; i < productos.length; i++) {
-//         productoEd.innerHTML += `<option>${productos[i].nombre}</option>`
-//         productoEl.innerHTML += `<option>${productos[i].nombre}</option>`
-//     }
-//     Object.keys(productos[0]).forEach(element => {
-//         atributoEd.innerHTML += `<option>${element}</option>`
-//     });
+// mostrar productos
+window.addEventListener("load", async () => {
+    productoData()
+    productoDataE()
+    const items = await axios.get('/api/items');
+    const data = items.data;
 
-//     let mostraProductos = document.getElementById('mostrarProductos')
-//     mostraProductos.innerHTML = ''
-//     for (let i = 0; i < productos.length; i++) {
-//         mostraProductos.innerHTML += `<div class="contenedorProductos"><img src="${productos[i].urlImagen}"><div class="informacion"><p>${productos[i].nombre}</p><p>${productos[i].descripcion}</p><p class="precio"><span>Precio: ${productos[i].valor}$</span></p> Existencia: ${productos[i].existencia}<p></p></div></div>`
-//     }
-// })
+    let mostraProductos = document.getElementById('mostrarProductos')
+    mostraProductos.innerHTML = ''
+    data.forEach((producto) => {
+        mostraProductos.innerHTML = `
+        <div class="contenedorProductos">
+            <img src="${producto.image}">
+            <div class="informacion">
+                <p>${producto.name}</p>
+                <p>${producto.description}</p>
+                <p class="precio">
+                    <span>Precio: ${producto.value}$</span>
+                </p> Existencia: ${producto.exist}
+                <p></p>
+            </div>
+        </div>`
+    })
+})
 
 
 
