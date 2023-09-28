@@ -109,7 +109,7 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     /*separacion entre cada cards para que ocupe 3 unicamente*/
-    gap: 30px;
+    gap: 50px;
     margin-bottom: 20px;
    
 }
