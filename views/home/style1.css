@@ -130,6 +130,7 @@ img {
 
 .informacion{
     height: 100px;
+    color: red;
     display: flex;
     justify-content: center;
     align-items: center;
