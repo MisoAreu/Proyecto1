@@ -40,7 +40,7 @@ img {
     
     /* diferentes proporciones y todas se vean igual */
     object-fit: cover;   
-    /* border-radius: 20px 20px 0px 0px; */
+     border-radius: 20px 20px 0px 0px; */
 }
 
 .navbar{
@@ -109,14 +109,14 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     /*separacion entre cada cards para que ocupe 3 unicamente*/
-    gap: 30px;
-    margin-bottom: 20px;
+    gap: 70px;
+    margin-bottom: 50px;
    
 }
 
 /* todos los productos, contenedores menores*/
 .contenedor>div{
-    box-shadow: 0px 0px 5px 0px rgba(117, 215, 217, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(161, 234, 235, 0.75);
     /* background-color: #70044c; */
     background-color: #030303;
     border-radius: 20px;
@@ -124,12 +124,13 @@ img {
 
 /*cuando el usuario pasa el cursor por encima, cambia de color mas oscuro*/
 .contenedor>div:hover{
-    background-color: #7de6e2;
+    background-color: #aef7f4;
     box-shadow: 0px 0px 5px 0px rgba(9, 9, 9, 0.75);
 }
 
 .informacion{
     height: 100px;
+    color: rgb(8, 8, 8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +164,7 @@ img {
 
 /*boton de comprar*/
 .informacion button{
-    background-color: #010307;
+    background-color: #c2f7fa;
     width: 100px;
     height: 35px;
     border-radius: 5px;
@@ -174,7 +175,8 @@ img {
     cursor: pointer;
 }
 .informacion button:hover{
-    background-color: #000000;
+    background-color:  #62d3d8;
+   
 }
 
 .infromacio button:active{

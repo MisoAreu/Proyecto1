@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 body {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #fefefe;
+    background-color: #ffffff;
     padding-top: 80px;
 }
 
@@ -72,7 +72,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-color:  #000000;
+    background-color:  #c4fff6;
     height: 485px;
     width: 400px;
     border-radius: 20px;
@@ -133,7 +133,7 @@ option{
 }
 
 .informacion {
-    height: 150px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
