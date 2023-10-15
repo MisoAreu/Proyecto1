@@ -37,6 +37,10 @@ app.use('/home', express.static(path.resolve('views', 'homeusu')));
 app.use('/blog', express.static(path.resolve('views', 'blog')));
 app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/admin', express.static(path.resolve('views', 'admin')));
+app.use('/paneladmin', express.static(path.resolve('views', 'paneladmin')));
+app.use('/paneladmin/maps', express.static(path.resolve('views', 'paneladmin', 'maps')));
+app.use('/paneladmin/profile', express.static(path.resolve('views', 'paneladmin', 'profile')));
+app.use('/paneladmin/tables', express.static(path.resolve('views', 'paneladmin', 'tables')));
 app.use('/images', express.static(path.resolve('img',)));
 app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
 
