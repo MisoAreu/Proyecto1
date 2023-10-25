@@ -86,6 +86,10 @@ body{
     font-size: 20px;
 }
 
+.nonee {
+    display: none;
+}
+
 .hola{
     margin: 10px 0 ;
 }

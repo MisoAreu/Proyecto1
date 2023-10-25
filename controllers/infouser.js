@@ -15,6 +15,16 @@ infouserRouter.get('/', async(request, response) => {
   }
   })
 
+infouserRouter.get('/user', async(request, response) => {
+      const user = request.user.id
+      const userExist = await User.findOne({ _id: user });
+      console.log(userExist);
+      if (!userExist) {
+          return response.status(400).json({ error: 'error al encontrar al usuario' });
+        }
+      return response.status(200).json(userExist)
+    })
+
 infouserRouter.patch('/', async(request, response) => {
     const user = request.user.id
     const data = request.body
