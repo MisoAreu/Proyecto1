@@ -30,6 +30,7 @@
   <link href="../assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="../assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link href="../assets/css/argon-dashboard.css?v=1.1.2" rel="stylesheet" />
 </head>
 
@@ -237,149 +238,10 @@
                    
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="user-content">
 
 
                   <!-- LINEA1COMPLETA -->
-                  
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm">Argon Design System</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                      $2,500 USD
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i> pending
-                      </span>
-                    </td>
-                    <td>
-                      <div class="avatar-group">
-                        SOY
-                      </div>
-                    </td>
-                  
-                  <tr>
-
-                    <tr>
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                          </a>
-                          <div class="media-body">
-                            <span class="mb-0 text-sm">Argon Design System</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td>
-                        $2,500 USD
-                      </td>
-                      <td>
-                        <span class="badge badge-dot mr-4">
-                          <i class="bg-warning"></i> pending
-                        </span>
-                      </td>
-                      <td>
-                        <div class="avatar-group">
-                          SOY
-                        </div>
-                      </td>
-                    
-                    <tr>
-
-                      <tr>
-                        <th scope="row">
-                          <div class="media align-items-center">
-                            <a href="#" class="avatar rounded-circle mr-3">
-                              <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                            </a>
-                            <div class="media-body">
-                              <span class="mb-0 text-sm">Argon Design System</span>
-                            </div>
-                          </div>
-                        </th>
-                        <td>
-                          $2,500 USD
-                        </td>
-                        <td>
-                          <span class="badge badge-dot mr-4">
-                            <i class="bg-warning"></i> pending
-                          </span>
-                        </td>
-                        <td>
-                          <div class="avatar-group">
-                            SOY
-                          </div>
-                        </td>
-                      
-                      <tr>
-
-                        <tr>
-                          <th scope="row">
-                            <div class="media align-items-center">
-                              <a href="#" class="avatar rounded-circle mr-3">
-                                <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                              </a>
-                              <div class="media-body">
-                                <span class="mb-0 text-sm">Argon Design System</span>
-                              </div>
-                            </div>
-                          </th>
-                          <td>
-                            $2,500 USD
-                          </td>
-                          <td>
-                            <span class="badge badge-dot mr-4">
-                              <i class="bg-warning"></i> pending
-                            </span>
-                          </td>
-                          <td>
-                            <div class="avatar-group">
-                              SOY
-                            </div>
-                          </td>
-                        
-                        <tr>
-
-                          <tr>
-                            <th scope="row">
-                              <div class="media align-items-center">
-                                <a href="#" class="avatar rounded-circle mr-3">
-                                  <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                                </a>
-                                <div class="media-body">
-                                  <span class="mb-0 text-sm">Argon Design System</span>
-                                </div>
-                              </div>
-                            </th>
-                            <td>
-                              $2,500 USD
-                            </td>
-                            <td>
-                              <span class="badge badge-dot mr-4">
-                                <i class="bg-warning"></i> pending
-                              </span>
-                            </td>
-                            <td>
-                              <div class="avatar-group">
-                                SOY
-                              </div>
-                            </td>
-                          
-                          <tr>
-        
-
-
-
 
 
 
@@ -415,7 +277,7 @@
             </div>
             <div class="card-footer py-4">
               <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
+                <!-- <ul class="pagination justify-content-end mb-0">
                   <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">
                       <i class="fas fa-angle-left"></i>
@@ -435,7 +297,7 @@
                       <span class="sr-only">Next</span>
                     </a>
                   </li>
-                </ul>
+                </ul> -->
               </nav>
             </div>
           </div>
@@ -448,6 +310,8 @@
   <script src="../assets/js/plugins/jquery/dist/jquery.min.js"></script>
   <script src="../assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!--   Optional JS   -->
+  <script type="module" src="../../components/itemuser.js"></script>
+  <script type="module" src="index.js"></script>
   <!--   Argon JS   -->
   <script src="../assets/js/argon-dashboard.min.js?v=1.1.2"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
