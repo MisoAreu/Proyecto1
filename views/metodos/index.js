@@ -12,3 +12,9 @@ async function logedUser() {
 }
 
 logedUser();
+
+const btnConfirm = document.getElementById('btn-confirm')
+
+btnConfirm.addEventListener('click', () => {
+    window.location.pathname = '/confirm';
+})

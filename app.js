@@ -47,6 +47,7 @@ app.use('/panelusu/maps', express.static(path.resolve('views', 'panelusu', 'maps
 app.use('/panelusu/profile', express.static(path.resolve('views', 'panelusu', 'profile')));
 app.use('/panelusu/tables', express.static(path.resolve('views', 'panelusu', 'tables')));
 app.use('/payment', express.static(path.resolve('views', 'metodos')));
+app.use('/confirm', express.static(path.resolve('views', 'tarjeta')));
 app.use('/images', express.static(path.resolve('img',)));
 app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
 

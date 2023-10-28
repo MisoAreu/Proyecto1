@@ -83,6 +83,11 @@ span {
   filter: drop-shadow(0 0 1px #000);
 }
 
+#form-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .container form .submit-btn{
   width: 100%;
   padding:12px;
