@@ -20,7 +20,10 @@ const numero = document.getElementById("numero");
 const header = document.querySelector("#header");
 const total = document.getElementById('total');
 const body = document.querySelector("body");
-const x = document.getElementById('x')
+const x = document.getElementById('x');
+
+const btnPanel = document.getElementById('btn-panel');
+const btnPay = document.getElementById('btn-payment');
 
 // Variables que vamos a usar en nuestoro proyecto
 let productos = [];
@@ -184,4 +187,12 @@ btnLogout.addEventListener('click', async e => {
 
 btnBlog.addEventListener('click', () => {
   window.location.pathname = '/blog';
+})
+
+btnPanel.addEventListener('click', () => {
+  window.location.pathname = '/panelusu';
+})
+
+btnPay.addEventListener('click', () => {
+  window.location.pathname = '/payment';
 })

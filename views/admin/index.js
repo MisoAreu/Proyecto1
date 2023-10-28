@@ -39,6 +39,9 @@ const valueProductInput = document.getElementById('valueAdded');
 const existProductInput = document.getElementById('existAdded');
 const imageProductInput = document.getElementById('imageAdded');
 
+const btnPanel = document.getElementById('btn-panel');
+const btnPay = document.getElementById('btn-pay');
+
 const btn = document.querySelector('#btnAdded');
 
 function guardarAlmacenamientoLocal(llave, valor_a_guardar) {
@@ -201,5 +204,12 @@ window.addEventListener("load", async () => {
     })
 })
 
+btnPanel.addEventListener('click', () => {
+    window.location.pathname = '/paneladmin';
+})
+
+btnPay.addEventListener('click', () => {
+    window.location.pathname = '/payment';
+})
 
 
