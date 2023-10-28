@@ -88,6 +88,22 @@ span {
   cursor: not-allowed;
 }
 
+.input-empty:focus {
+  outline-color: #4338ca
+}
+
+.input-correct {
+  outline-color: #15803d;
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+.input-incorrect {
+  outline-color: #b91c1c;
+  outline-width: 2px;
+  outline-style: solid;
+}
+
 .container form .submit-btn{
   width: 100%;
   padding:12px;
@@ -100,4 +116,48 @@ span {
 
 .container form .submit-btn:hover{
   background: #2ecc71;
+}
+
+#spinner-container {
+  display: none;
+  justify-content: center;
+}
+
+#modal-done {
+  display: none;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+  width: 20rem;
+}
+
+#modal-text {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #15803d;
+}
+
+.spinner-sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid #ccc;
+  border-top-color: #999;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

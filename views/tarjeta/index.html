@@ -77,9 +77,12 @@
 
 
     <!-- FORMULARIO DE PAGO CON TARJETA -->
-
+    <div id="modal-done">
+        <div id="modal-content">
+            <span id="modal-text">Compra exitosa de...</span>
+        </div>
+    </div>
 <div class="container">
-
     <form action="">
 
         <div class="row">
@@ -132,7 +135,7 @@
                 </div>
                 <div class="inputBox">
                     <span>Número de tarjeta de crédito :</span>
-                    <input id="input-numbercard" type="number" placeholder="1111-2222-3333-4444">
+                    <input id="input-numbercard" type="text" placeholder="1111-2222-3333-4444">
                 </div>
                 <div class="inputBox">
                     <span>Mes de vencimiento :</span>
@@ -154,7 +157,12 @@
     
         </div>
 
-        <input id="form-btn" disabled type="submit" value="Realizar pago" class="submit-btn">
+        <button id="form-btn" disabled class="submit-btn">
+            <div id="spinner-container">
+                <div class="spinner-sm"></div>
+            </div>
+              <span id="button-text">Realizar pago</span>
+        </button>
 
     </form>
 
